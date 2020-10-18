@@ -8,54 +8,74 @@ import (
 
 const testDir = "testdata/"
 
-func TestLoadErr(t *testing.T) {
+func TestLoad(t *testing.T) {
 	cases := []struct {
 		filename string
+		hasCfg   bool
 		wantErr  error
 	}{
-		{testDir + "my.ini", nil},
-		{testDir + "nonexist.ini", fmt.Errorf("open testdata/nonexist.ini: no such file or directory")},
-		{testDir + "empty.ini", nil},
+		{testDir + "my.ini", true, nil},
+		{testDir + "nonexist.ini", false, fmt.Errorf("open " + testDir + "nonexist.ini: no such file or directory")},
+		{testDir + "empty.ini", true, nil},
 	}
 	for _, c := range cases {
-		_, err := Load(c.filename)
+		cfg, err := Load(c.filename)
 		if err == nil && c.wantErr == nil {
 			continue
 		}
 		if err == nil || c.wantErr == nil || err.Error() != c.wantErr.Error() {
 			t.Errorf("wantErr: %v, gotErr: %v", c.wantErr, err)
 		}
+		if (cfg != nil) != c.hasCfg {
+			t.Errorf("want hasCfg: %v, got cfg: %v", c.hasCfg, cfg)
+		}
 	}
 }
 
-func TestLoadFile(t *testing.T) {
+func TestConfigInit(t *testing.T) {
+	cfg := Config{}
+	cfg.init()
+	if cfg.Sections == nil {
+		t.Errorf("init cfg.sections error")
+	}
+}
+
+func TestConfigNewSection(t *testing.T) {
+	cases := []struct {
+		name    string
+		wantErr error
+	}{
+		{"sec1", nil},
+		{"", fmt.Errorf("empty section name")},
+		{"sec1", fmt.Errorf("section(sec1) name already exists")},
+		{"sec2", nil},
+	}
+	cfg := Config{}
+	cfg.init()
+	for _, c := range cases {
+		err := cfg.NewSection(c.name)
+		if c.wantErr == nil && err == nil {
+			continue
+		} else if err == nil || c.wantErr == nil || err.Error() != c.wantErr.Error() {
+			t.Errorf("wantErr: %v, gotErr: %v", c.wantErr, err)
+		}
+	}
 	want := Config{
-		SectionList: []string{"DEFAULT", "paths", "server"},
+		SectionList: []string{"sec1", "sec2"},
 		Sections: map[string]*Section{
-			"DEFAULT": &Section{
-				KeyVal: map[string]string{"app_mode": "development"},
-			},
-			"paths": &Section{
-				KeyVal: map[string]string{"data": "/home/git/grafana"},
-			},
-			"server": &Section{
-				KeyVal: map[string]string{
-					"protocol":       "http",
-					"http_port":      "9999",
-					"enforce_domain": "true"},
-			},
+			"sec1": &Section{KeyVal: map[string]string{}},
+			"sec2": &Section{KeyVal: map[string]string{}},
 		},
 	}
-	cfg, err := Load(testDir + "my.ini")
-	if err != nil {
-		t.Errorf("Error: %v", err)
-	}
-	if !reflect.DeepEqual(want.SectionList, cfg.SectionList) {
+	if !reflect.DeepEqual(cfg.SectionList, want.SectionList) {
 		t.Errorf("wantSecList: %v, gotSecList: %v", want.SectionList, cfg.SectionList)
 	}
-	for _, secName := range want.SectionList {
-		if !reflect.DeepEqual(want.Sections[secName], cfg.Sections[secName]) {
-			t.Errorf("wantSections: %v, gotSections: %v", want.Sections[secName], cfg.Sections[secName])
+	if !reflect.DeepEqual(want.Sections, cfg.Sections) {
+		for _, secName := range want.SectionList {
+			if !reflect.DeepEqual(want.Sections[secName], cfg.Sections[secName]) {
+				t.Errorf("wantSection: %v, gotSection: %v", want.Sections[secName], cfg.Sections[secName])
+			}
 		}
+		t.Errorf("want Sections not equal to got Sections")
 	}
 }

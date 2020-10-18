@@ -1,7 +1,10 @@
 package ini
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"reflect"
 	"testing"
 )
 
@@ -74,5 +77,48 @@ func TestParseValue(t *testing.T) {
 		} else if err == nil || c.wantErr == nil || err.Error() != c.wantErr.Error() {
 			t.Errorf("wantErr: %v, gotErr: %v", c.wantErr, err)
 		}
+	}
+}
+
+func TestParse(t *testing.T) {
+	want := Config{
+		SectionList: []string{"DEFAULT", "paths", "server"},
+		Sections: map[string]*Section{
+			"DEFAULT": &Section{
+				KeyVal: map[string]string{"app_mode": "development"},
+			},
+			"paths": &Section{
+				KeyVal: map[string]string{"data": "/home/git/grafana"},
+			},
+			"server": &Section{
+				KeyVal: map[string]string{
+					"protocol":       "http",
+					"http_port":      "9999",
+					"enforce_domain": "true"},
+			},
+		},
+	}
+	f, err := os.Open(testDir + "my.ini")
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer f.Close()
+
+	buf := bufio.NewReader(f)
+	cfg, err := parse(buf)
+
+	if err != nil {
+		t.Errorf("Error: %v", err)
+	}
+	if !reflect.DeepEqual(want.SectionList, cfg.SectionList) {
+		t.Errorf("wantSecList: %v, gotSecList: %v", want.SectionList, cfg.SectionList)
+	}
+	if !reflect.DeepEqual(want.Sections, cfg.Sections) {
+		for _, secName := range want.SectionList {
+			if !reflect.DeepEqual(want.Sections[secName], cfg.Sections[secName]) {
+				t.Errorf("wantSection: %v, gotSection: %v", want.Sections[secName], cfg.Sections[secName])
+			}
+		}
+		t.Errorf("want Sections not equal to got Sections")
 	}
 }
