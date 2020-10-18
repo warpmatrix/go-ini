@@ -3,12 +3,32 @@ package ini
 import (
 	"bufio"
 	"errors"
+	"fmt"
 	"os"
+	"sync"
 )
 
-// type Listener interface{ listen(inifile string) }
+// Listener interface used in watch function
+type Listener interface{ listen(inifile string) }
 
-// type ListenFunc func(string)
+// ListenFunc a default type to implement Listener interface
+type ListenFunc func(string)
+
+// Watch inifile if inifile is changed return new Config
+func Watch(filename string, listener Listener) (*Config, error) {
+	waitGrp := sync.WaitGroup{}
+	waitGrp.Add(1)
+	go func() {
+		listener.listen(filename)
+		waitGrp.Done()
+	}()
+	waitGrp.Wait()
+	return Load(filename)
+}
+
+func (l ListenFunc) listen(filename string) {
+	l(filename)
+}
 
 // Config represents a combination of one or more INI files in memory.
 type Config struct {
@@ -41,7 +61,7 @@ func (cfg *Config) NewSection(name string) error {
 		return errors.New("empty section name")
 	}
 	if cfg.Sections[name] != nil {
-		return errors.New("already has same section name")
+		return fmt.Errorf("section(%s) name already exists", name)
 	}
 	cfg.SectionList = append(cfg.SectionList, name)
 	cfg.Sections[name] = &Section{
