@@ -17,7 +17,7 @@ func TestParseKeyName(t *testing.T) {
 	}{
 		{"key1 = value", "key1", 6, nil},
 		{" = value", "", 2, nil},
-		{"key2  value", "", -1, fmt.Errorf("delimiter(%s) not found", keyValueDelim)},
+		{"key2  value", "", -1, fmt.Errorf("delimiter(%s) not found", KeyValueDelim)},
 	}
 	for _, c := range cases {
 		keyName, offset, err := parseKeyName(c.line)

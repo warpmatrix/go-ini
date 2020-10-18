@@ -2,7 +2,9 @@ package ini
 
 import "fmt"
 
-// Section in ini file with key-value
+// Section in ini file with keyVal map
+//
+// Section 数据结构提供了 KeyVal 字段，可用通过 key 字符串映射到 value 字符串
 type Section struct {
 	KeyVal map[string]string
 }

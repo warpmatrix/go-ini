@@ -10,14 +10,14 @@ import (
 	"unicode"
 )
 
-const (
+var (
 	// DefaultSection is the name of default section. You can use this constant or the string literal.
 	// In most of cases, an empty string is all you need to access the section.
 	DefaultSection = "DEFAULT"
-	keyValueDelim  = "="
-)
 
-var (
+	// KeyValueDelim is a string which contents all possiable delimiter symbols
+	KeyValueDelim = "="
+
 	// CommentSym based on running os to set ';' or '#'
 	CommentSym = "#"
 
@@ -53,7 +53,7 @@ func parse(reader *bufio.Reader) (*Config, error) {
 		}
 		// DefaultSection
 		if len(cfg.SectionList) == 0 {
-			err = cfg.NewSection(secName)
+			err = cfg.newSection(secName)
 			if err != nil {
 				return nil, err
 			}
@@ -107,7 +107,7 @@ func parseSecName(line []byte, cfg *Config) (string, error) {
 		return "", fmt.Errorf("unclosed section: %s", line)
 	}
 	secName := string(line[1:closeIdx])
-	err := cfg.NewSection(secName)
+	err := cfg.newSection(secName)
 	if err != nil {
 		return "", err
 	}
@@ -115,9 +115,9 @@ func parseSecName(line []byte, cfg *Config) (string, error) {
 }
 
 func parseKeyName(line string) (string, int, error) {
-	endIdx := strings.IndexAny(line, keyValueDelim)
+	endIdx := strings.IndexAny(line, KeyValueDelim)
 	if endIdx < 0 {
-		return "", -1, fmt.Errorf("delimiter(%s) not found", keyValueDelim)
+		return "", -1, fmt.Errorf("delimiter(%s) not found", KeyValueDelim)
 	}
 	return strings.TrimSpace(line[0:endIdx]), endIdx + 1, nil
 }

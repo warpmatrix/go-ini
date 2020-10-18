@@ -53,7 +53,7 @@ func TestConfigNewSection(t *testing.T) {
 	cfg := Config{}
 	cfg.init()
 	for _, c := range cases {
-		err := cfg.NewSection(c.name)
+		err := cfg.newSection(c.name)
 		if c.wantErr == nil && err == nil {
 			continue
 		} else if err == nil || c.wantErr == nil || err.Error() != c.wantErr.Error() {
