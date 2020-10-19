@@ -51,8 +51,8 @@ func parse(reader *bufio.Reader) (*Config, error) {
 			}
 			continue
 		}
-		// DefaultSection
-		if len(cfg.SectionList) == 0 {
+		// new Default Section
+		if len(cfg.SecList) == 0 {
 			err = cfg.newSection(secName)
 			if err != nil {
 				return nil, err
@@ -130,7 +130,7 @@ func parseValue(line string) (string, error) {
 	// TODO: Check continuation lines when desired
 
 	// Check inline comment
-	i := strings.IndexAny(line, "#;")
+	i := strings.IndexAny(line, CommentSym)
 	if i > -1 {
 		line = strings.TrimSpace(line[:i])
 	}

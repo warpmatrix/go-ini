@@ -61,17 +61,17 @@ func TestConfigNewSection(t *testing.T) {
 		}
 	}
 	want := Config{
-		SectionList: []string{"sec1", "sec2"},
+		SecList: []string{"sec1", "sec2"},
 		Sections: map[string]*Section{
 			"sec1": &Section{KeyVal: map[string]string{}},
 			"sec2": &Section{KeyVal: map[string]string{}},
 		},
 	}
-	if !reflect.DeepEqual(cfg.SectionList, want.SectionList) {
-		t.Errorf("wantSecList: %v, gotSecList: %v", want.SectionList, cfg.SectionList)
+	if !reflect.DeepEqual(cfg.SecList, want.SecList) {
+		t.Errorf("wantSecList: %v, gotSecList: %v", want.SecList, cfg.SecList)
 	}
 	if !reflect.DeepEqual(want.Sections, cfg.Sections) {
-		for _, secName := range want.SectionList {
+		for _, secName := range want.SecList {
 			if !reflect.DeepEqual(want.Sections[secName], cfg.Sections[secName]) {
 				t.Errorf("wantSection: %v, gotSection: %v", want.Sections[secName], cfg.Sections[secName])
 			}

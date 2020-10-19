@@ -1,182 +1,195 @@
 using GOPATH mode
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#375EAB">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#375EAB">
 
-  <title>ini - Go Documentation Server</title>
+	<title>ini - Go Documentation Server</title>
 
-<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+	<link type="text/css" rel="stylesheet" href="doc/style.css">
 
-<script>window.initFuncs = [];</script>
-<script src="/lib/godoc/jquery.js" defer></script>
+	<script>window.initFuncs = [];</script>
+	<script src="doc/jquery.js" defer></script>
 
 
 
-<script>var goVersion = "go1.15.2";</script>
-<script src="/lib/godoc/godocs.js" defer></script>
+	<script>var goVersion = "go1.15.2";</script>
+	<script src="doc/godocs.js" defer></script>
 </head>
+
 <body>
 
-<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
-...
-</div><!-- #lowframe -->
+	<div id='lowframe'
+		style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+		...
+	</div><!-- #lowframe -->
 
-<div id="topbar" class="wide"><div class="container">
-<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
-<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
-<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
-<form method="GET" action="/search">
-<div id="menu">
+	<div id="topbar" class="wide">
+		<div class="container">
+			<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+			<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+			<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+			<form method="GET" action="/search">
+				<div id="menu">
 
-<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
-</div>
-</form>
+					<span class="search-box"><input type="search" id="search" name="q" placeholder="Search"
+							aria-label="Search" required><button type="submit"><span>
+								<!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24">
+									<title>submit search</title>
+									<path
+										d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+									<path d="M0 0h24v24H0z" fill="none" />
+								</svg></span></button></span>
+				</div>
+			</form>
 
-</div></div>
-
-
-
-<div id="page" class="wide">
-<div class="container">
-
-
-  <h1>
-    Package ini
-    <span class="text-muted"></span>
-  </h1>
-
+		</div>
+	</div>
 
 
 
+	<div id="page" class="wide">
+		<div class="container">
+
+
+			<h1>
+				Package ini
+				<span class="text-muted"></span>
+			</h1>
 
 
 
-<div id="nav"></div>
 
 
-<!--
+
+
+			<div id="nav"></div>
+
+
+			<!--
 	Copyright 2009 The Go Authors. All rights reserved.
 	Use of this source code is governed by a BSD-style
 	license that can be found in the LICENSE file.
 -->
-<!--
+			<!--
 	Note: Static (i.e., not template-generated) href and id
 	attributes start with "pkg-" to make it impossible for
 	them to conflict with generated attributes (some of which
 	correspond to Go identifiers).
 -->
 
-	<script>
-	document.ANALYSIS_DATA = null;
-	document.CALLGRAPH = null;
-	</script>
+			<script>
+				document.ANALYSIS_DATA = null;
+				document.CALLGRAPH = null;
+			</script>
 
-	
-		
-		<div id="short-nav">
-			<dl>
-			<dd><code>import "github.com/github-user/ini"</code></dd>
-			</dl>
-			<dl>
-			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
-			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
-			
-			
-			</dl>
-		</div>
-		<!-- The package's Name is printed as title by the top-level template -->
-		<div id="pkg-overview" class="toggleVisible">
-			<div class="collapsed">
-				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+
+
+			<div id="short-nav">
+				<dl>
+					<dd><code>import "github.com/github-user/ini"</code></dd>
+				</dl>
+				<dl>
+					<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+					<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+
+
+				</dl>
 			</div>
-			<div class="expanded">
-				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
-				<p>
-Package ini 包实现了读取简单 ini 文件的功能，
-并且提供了对应的接口函数，用来监听配置文件是否被修改等一些特定的时间
-让开发者自己决定处理配置变化，最终返回一个新的配置文件数据结构。
-</p>
+			<!-- The package's Name is printed as title by the top-level template -->
+			<div id="pkg-overview" class="toggleVisible">
+				<div class="collapsed">
+					<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+				</div>
+				<div class="expanded">
+					<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+					<p>
+						Package ini 包实现了读取简单 ini 文件的功能，
+						并且提供了对应的接口函数，用来监听配置文件是否被修改等一些特定的时间
+						让开发者自己决定处理配置变化，最终返回一个新的配置文件数据结构。
+					</p>
 
-				
+
+				</div>
 			</div>
-		</div>
 
-		<div id="pkg-index" class="toggleVisible">
-		<div class="collapsed">
-			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
-		</div>
-		<div class="expanded">
-			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+			<div id="pkg-index" class="toggleVisible">
+				<div class="collapsed">
+					<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+				</div>
+				<div class="expanded">
+					<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
 
-		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
-			<div id="manual-nav">
-			<dl>
-			
-			
-				<dd><a href="#pkg-variables">Variables</a></dd>
-			
-			
-			
-				
-				<dd><a href="#Config">type Config</a></dd>
-				
-					
-					<dd>&nbsp; &nbsp; <a href="#Load">func Load(filename string) (*Config, error)</a></dd>
-				
-					
-					<dd>&nbsp; &nbsp; <a href="#Watch">func Watch(filename string, listener Listener) (*Config, error)</a></dd>
-				
-				
-			
-				
-				<dd><a href="#ListenFunc">type ListenFunc</a></dd>
-				
-				
-			
-				
-				<dd><a href="#Listener">type Listener</a></dd>
-				
-				
-			
-				
-				<dd><a href="#Section">type Section</a></dd>
-				
-				
-			
-			
-			</dl>
-			</div><!-- #manual-nav -->
+					<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+					<div id="manual-nav">
+						<dl>
 
-		
 
-		
-			<h3>Package files</h3>
-			<p>
-			<span style="font-size:90%">
-			
-				<a href="/src/github.com/github-user/ini/file.go">file.go</a>
-			
-				<a href="/src/github.com/github-user/ini/parser.go">parser.go</a>
-			
-				<a href="/src/github.com/github-user/ini/section.go">section.go</a>
-			
-			</span>
-			</p>
-		
-		</div><!-- .expanded -->
-		</div><!-- #pkg-index -->
+							<dd><a href="#pkg-variables">Variables</a></dd>
 
-		
 
-		
-		
+
+
+							<dd><a href="#Config">type Config</a></dd>
+
+
+							<dd>&nbsp; &nbsp; <a href="#Load">func Load(filename string) (*Config, error)</a></dd>
+
+
+							<dd>&nbsp; &nbsp; <a href="#Watch">func Watch(filename string, listener Listener) (*Config,
+									error)</a></dd>
+
+
+
+
+							<dd><a href="#ListenFunc">type ListenFunc</a></dd>
+
+
+
+
+							<dd><a href="#Listener">type Listener</a></dd>
+
+
+
+
+							<dd><a href="#Section">type Section</a></dd>
+
+
+
+
+						</dl>
+					</div><!-- #manual-nav -->
+
+
+
+
+					<h3>Package files</h3>
+					<p>
+						<span style="font-size:90%">
+
+							<a href="/src/github.com/github-user/ini/file.go">file.go</a>
+
+							<a href="/src/github.com/github-user/ini/parser.go">parser.go</a>
+
+							<a href="/src/github.com/github-user/ini/section.go">section.go</a>
+
+						</span>
+					</p>
+
+				</div><!-- .expanded -->
+			</div><!-- #pkg-index -->
+
+
+
+
+
 			<h2 id="pkg-variables">Variables</h2>
-			
-				
-				<pre>var (
+
+
+			<pre>var (
     <span class="comment">// DefaultSection is the name of default section. You can use this constant or the string literal.</span>
     <span class="comment">// In most of cases, an empty string is all you need to access the section.</span>
     <span id="DefaultSection">DefaultSection</span> = &#34;DEFAULT&#34;
@@ -191,171 +204,157 @@ Package ini 包实现了读取简单 ini 文件的功能，
     <span class="comment">// This variable will be changed to &#34;\r\n&#34; automatically on Windows at package init time.</span>
     <span id="LineBreak">LineBreak</span> = &#34;\n&#34;
 )</pre>
-			
-		
-		
-		
-			
-			
-			<h2 id="Config">type <a href="/src/github.com/github-user/ini/file.go?s=1413:1546#L29">Config</a>
+
+
+
+
+
+
+			<h2 id="Config">type <a href="/src/github.com/github-user/ini/file.go?s=1413:1542#L29">Config</a>
 				<a class="permalink" href="#Config">&#xb6;</a>
-				
-				
+
+
 			</h2>
 			<p>
-Config represents a INI files in memory
-</p>
-<p>
-Config 结构将 ini 文件，以特定的形式将文件内容保存在内存中
-</p>
+				Config represents a INI files in memory
+			</p>
+			<p>
+				Config 结构将 ini 文件，以特定的形式将文件内容保存在内存中
+			</p>
 
 			<pre>type Config struct {
     <span class="comment">// To keep data in order.</span>
-<span id="Config.SectionList"></span>    SectionList []<a href="/pkg/builtin/#string">string</a>
+<span id="Config.SecList"></span>    SecList []<a href="/pkg/builtin/#string">string</a>
     <span class="comment">// Actual data is stored here.</span>
 <span id="Config.Sections"></span>    Sections map[<a href="/pkg/builtin/#string">string</a>]*<a href="#Section">Section</a>
 }
 </pre>
 
-			
 
-			
 
-			
-			
-			
 
-			
-				
-				<h3 id="Load">func <a href="/src/github.com/github-user/ini/file.go?s=1698:1741#L39">Load</a>
-					<a class="permalink" href="#Load">&#xb6;</a>
-					
-					
-				</h3>
-				<pre>func Load(filename <a href="/pkg/builtin/#string">string</a>) (*<a href="#Config">Config</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
-				<p>
-Load ini file, return error if exists
-</p>
-<p>
-Load 函数读取 ini 文件，根据文件内容返回 Config 结构指针或可能产生的错误。
-</p>
 
-				
-				
-			
-				
-				<h3 id="Watch">func <a href="/src/github.com/github-user/ini/file.go?s=1101:1164#L17">Watch</a>
-					<a class="permalink" href="#Watch">&#xb6;</a>
-					
-					
-				</h3>
-				<pre>func Watch(filename <a href="/pkg/builtin/#string">string</a>, listener <a href="#Listener">Listener</a>) (*<a href="#Config">Config</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
-				<p>
-Watch ini-file if some event happened then it returns a new Config pointer and error
-</p>
-<p>
-Watch 函数接收一个 Listener 接口，函数会调用其中的 listen 函数，用于监听特定事件发生。
-当事件发生后，线程从 listen 函数返回，重新执行 Load 函数返回新的 Config 指针或可能产生的错误。
-</p>
 
-				
-				
-			
 
-			
-		
-			
-			
+
+
+
+
+			<h3 id="Load">func <a href="/src/github.com/github-user/ini/file.go?s=1694:1737#L39">Load</a>
+				<a class="permalink" href="#Load">&#xb6;</a>
+
+
+			</h3>
+			<pre>func Load(filename <a href="/pkg/builtin/#string">string</a>) (*<a href="#Config">Config</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+				Load ini file, return error if exists
+			</p>
+			<p>
+				Load 函数读取 ini 文件，根据文件内容返回 Config 结构指针或可能产生的错误。
+			</p>
+
+
+
+
+
+			<h3 id="Watch">func <a href="/src/github.com/github-user/ini/file.go?s=1101:1164#L17">Watch</a>
+				<a class="permalink" href="#Watch">&#xb6;</a>
+
+
+			</h3>
+			<pre>func Watch(filename <a href="/pkg/builtin/#string">string</a>, listener <a href="#Listener">Listener</a>) (*<a href="#Config">Config</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>
+				Watch ini-file if some event happened then it returns a new Config pointer and error
+			</p>
+			<p>
+				Watch 函数接收一个 Listener 接口，函数会调用其中的 listen 函数，用于监听特定事件发生。
+				当事件发生后，线程从 listen 函数返回，重新执行 Load 函数返回新的 Config 指针或可能产生的错误。
+			</p>
+
+
+
+
+
+
+
+
+
 			<h2 id="ListenFunc">type <a href="/src/github.com/github-user/ini/file.go?s=725:753#L11">ListenFunc</a>
 				<a class="permalink" href="#ListenFunc">&#xb6;</a>
-				
-				
+
+
 			</h2>
 			<p>
-ListenFunc a default type to implement Listener interface
-</p>
-<p>
-ListenFunc 是 Listener 接口的一个默认实现结构，可以将实现的 listen 函数转换成该类型传入 watch 函数
-</p>
+				ListenFunc a default type to implement Listener interface
+			</p>
+			<p>
+				ListenFunc 是 Listener 接口的一个默认实现结构，可以将实现的 listen 函数转换成该类型传入 watch 函数
+			</p>
 
 			<pre>type ListenFunc func(<a href="/pkg/builtin/#string">string</a>)</pre>
 
-			
 
-			
 
-			
-			
-			
 
-			
 
-			
-		
-			
-			
+
+
+
+
+
+
+
+
+
+
 			<h2 id="Listener">type <a href="/src/github.com/github-user/ini/file.go?s=477:526#L6">Listener</a>
 				<a class="permalink" href="#Listener">&#xb6;</a>
-				
-				
+
+
 			</h2>
 			<p>
-Listener interface used in watch function
-</p>
-<p>
-Listener 接口使用在 watch 函数中，其中的 listen 函数用于监听特定事件的发生
-</p>
+				Listener interface used in watch function
+			</p>
+			<p>
+				Listener 接口使用在 watch 函数中，其中的 listen 函数用于监听特定事件的发生
+			</p>
 
 			<pre>type Listener interface {
     <span class="comment">// contains filtered or unexported methods</span>
 }</pre>
 
-			
 
-			
 
-			
-			
-			
 
-			
 
-			
-		
-			
-			
-			<h2 id="Section">type <a href="/src/github.com/github-user/ini/section.go?s=170:219#L1">Section</a>
+
+
+
+
+
+
+
+
+
+
+			<h2 id="Section">type <a href="/src/github.com/github-user/ini/section.go?s=170:238#L1">Section</a>
 				<a class="permalink" href="#Section">&#xb6;</a>
-				
-				
+
+
 			</h2>
 			<p>
-Section in ini file with keyVal map
-</p>
-<p>
-Section 数据结构提供了 KeyVal 字段，可用通过 key 字符串映射到 value 字符串
-</p>
+				Section in ini file with keyVal map
+			</p>
+			<p>
+				Section 数据结构提供了 KeyVal 字段，可用通过 key 字符串映射到 value 字符串
+			</p>
 
 			<pre>type Section struct {
-<span id="Section.KeyVal"></span>    KeyVal map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>
+<span id="Section.KeyList"></span>    KeyList []<a href="/pkg/builtin/#string">string</a>
+<span id="Section.KeyVal"></span>    KeyVal  map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>
 }
 </pre>
 
-			
-
-			
-
-			
-			
-			
-
-			
-
-			
-		
-	
-
-	
 
 
 
@@ -363,17 +362,33 @@ Section 数据结构提供了 KeyVal 字段，可用通过 key 字符串映射�
 
 
 
-<div id="footer">
-Build version go1.15.2.<br>
-Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
-the content of this page is licensed under the
-Creative Commons Attribution 3.0 License,
-and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
-<a href="/doc/tos.html">Terms of Service</a> |
-<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
-</div>
 
-</div><!-- .container -->
-</div><!-- #page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div id="footer">
+				Build version go1.15.2.<br>
+				Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+				the content of this page is licensed under the
+				Creative Commons Attribution 3.0 License,
+				and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+				<a href="/doc/tos.html">Terms of Service</a> |
+				<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+			</div>
+
+		</div><!-- .container -->
+	</div><!-- #page -->
 </body>
+
 </html>

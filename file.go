@@ -38,7 +38,7 @@ func (l ListenFunc) listen(filename string) {
 // Config 结构将 ini 文件，以特定的形式将文件内容保存在内存中
 type Config struct {
 	// To keep data in order.
-	SectionList []string
+	SecList []string
 	// Actual data is stored here.
 	Sections map[string]*Section
 }
@@ -69,7 +69,7 @@ func (cfg *Config) newSection(name string) error {
 	if cfg.Sections[name] != nil {
 		return fmt.Errorf("section(%s) name already exists", name)
 	}
-	cfg.SectionList = append(cfg.SectionList, name)
+	cfg.SecList = append(cfg.SecList, name)
 	cfg.Sections[name] = &Section{
 		KeyVal: make(map[string]string),
 	}

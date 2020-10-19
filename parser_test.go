@@ -82,15 +82,18 @@ func TestParseValue(t *testing.T) {
 
 func TestParse(t *testing.T) {
 	want := Config{
-		SectionList: []string{"DEFAULT", "paths", "server"},
+		SecList: []string{"DEFAULT", "paths", "server"},
 		Sections: map[string]*Section{
 			"DEFAULT": &Section{
-				KeyVal: map[string]string{"app_mode": "development"},
+				KeyList: []string{"app_mode"},
+				KeyVal:  map[string]string{"app_mode": "development"},
 			},
 			"paths": &Section{
-				KeyVal: map[string]string{"data": "/home/git/grafana"},
+				KeyList: []string{"data"},
+				KeyVal:  map[string]string{"data": "/home/git/grafana"},
 			},
 			"server": &Section{
+				KeyList: []string{"protocol", "http_port", "enforce_domain"},
 				KeyVal: map[string]string{
 					"protocol":       "http",
 					"http_port":      "9999",
@@ -110,11 +113,11 @@ func TestParse(t *testing.T) {
 	if err != nil {
 		t.Errorf("Error: %v", err)
 	}
-	if !reflect.DeepEqual(want.SectionList, cfg.SectionList) {
-		t.Errorf("wantSecList: %v, gotSecList: %v", want.SectionList, cfg.SectionList)
+	if !reflect.DeepEqual(want.SecList, cfg.SecList) {
+		t.Errorf("wantSecList: %v, gotSecList: %v", want.SecList, cfg.SecList)
 	}
 	if !reflect.DeepEqual(want.Sections, cfg.Sections) {
-		for _, secName := range want.SectionList {
+		for _, secName := range want.SecList {
 			if !reflect.DeepEqual(want.Sections[secName], cfg.Sections[secName]) {
 				t.Errorf("wantSection: %v, gotSection: %v", want.Sections[secName], cfg.Sections[secName])
 			}
