@@ -8,6 +8,7 @@
   - [`file.go` 文件](#filego-文件)
   - [`parse.go` 文件](#parsego-文件)
   - [`section.go` 文件](#sectiongo-文件)
+  - [自定义错误](#自定义错误)
 - [单元测试结果](#单元测试结果)
 - [功能测试结果](#功能测试结果)
 
@@ -60,6 +61,26 @@ type Config struct {
 
 `section.go` 文件定义了 `Section` 结构体，用来存储每一节所含有的所有键值对信息以及一个字符串数组存储该节所有的键名。
 
+### 自定义错误
+
+程序通过 `fmt.Errorf()` 函数在系统默认的 `error` 中自定义了一些错误提示。如：
+
+- `section.go` 中的 `newKeyVal` 函数
+
+    ```go
+    if _, ok := sec.KeyVal[keyName]; ok {
+        return fmt.Errorf("key(%v) already exists", keyName)
+    }
+    ```
+
+- `parse.go` 文件中的 `parseKeyName` 函数
+
+    ```go
+    if endIdx < 0 {
+        return "", -1, fmt.Errorf("delimiter(%s) not found", KeyValueDelim)
+    }
+    ```
+
 ## 单元测试结果
 
 该包的每一个 `*.go` 都对应一个 `*_test.go` 文件，含有相应的测试函数。执行对应的 `go test` 指令，所有的单元测试都得到了通过，结果如下图所示。
@@ -79,7 +100,7 @@ import (
 
     "github.com/fsnotify/fsnotify"
     // ini "domain-name/Id/repo"
-    "github.com/github-user/ini"
+    ini "github.com/warpmatrix/go-ini"
 )
 
 func main() {

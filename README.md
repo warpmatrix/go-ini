@@ -15,7 +15,9 @@ ini 包实现了读取简单 ini 文件的功能，并且提供了对应的接�
 
 ## Getting Started
 
-包的主要用法可以参见 [api 文档](godoc.html)，下面提供简单说明主要函数的用法。并在最后提供相关函数的的使用示例。
+使用指令 `go get gitee.com/warpmatrix/go-ini` 或指令 `go get github.com/warpmatrix/go-ini` 可以安装该 `ini` 包。
+
+该包的主要用法可以参见 [api 文档](godoc.html)，下面提供简单说明主要函数的用法。并在最后提供相关函数的的使用示例。
 
 ### `Load` 函数的使用
 
@@ -76,8 +78,8 @@ package main
 import (
     "fmt"
 
-    // ini "domain-name/Id/repo"
-    "github.com/github-user/ini"
+    // ini "domain-name/user/repo"
+    ini "github.com/warpmatrix/go-ini"
 )
 
 func main() {
@@ -127,8 +129,8 @@ import (
     "log"
 
     "github.com/fsnotify/fsnotify"
-    // ini "domain-name/Id/repo"
-    "github.com/github-user/ini"
+    // ini "domain-name/user/repo"
+    ini "github.com/warpmatrix/go-ini"
 )
 
 func main() {
